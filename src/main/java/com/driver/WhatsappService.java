@@ -2,6 +2,7 @@ package com.driver;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -14,7 +15,7 @@ public class WhatsappService {
         return whatsappRepository.createUser(name,mobile);
     }
 
-    public Group createGroup(List<User> users){
+    public Group createGroup(List<User> users) throws Exception {
         return whatsappRepository.createGroup(users);
     }
 
@@ -31,4 +32,11 @@ public class WhatsappService {
         return whatsappRepository.changeAdmin(approver,user,group);
     }
 
+    public int removeUser(User user) throws Exception {
+        return whatsappRepository.removeUser(user);
+    }
+
+    public String findMessage(Date start, Date end, int k) throws Exception {
+        return whatsappRepository.findMessage(start,end,k);
+    }
 }

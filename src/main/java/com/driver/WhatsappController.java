@@ -27,13 +27,11 @@ public class WhatsappController {
         //If the mobile number exists in database, throw "User already exists" exception
         //Otherwise, create the user and return "SUCCESS"
 
-
-
         return whatsappService.createUser(name, mobile);
     }
 
     @PostMapping("/add-group")
-    public Group createGroup(@RequestBody List<User> users){
+    public Group createGroup(@RequestBody List<User> users) throws Exception {
         // The list contains at least 2 users where the first user is the admin. A group has exactly one admin.
         // If there are only 2 users, the group is a personal chat and the group name should be kept as the name of the second user(other than admin)
         // If there are 2+ users, the name of group should be "Group count". For example, the name of first group would be "Group 1", second would be "Group 2" and so on.
@@ -72,7 +70,7 @@ public class WhatsappController {
         return whatsappService.changeAdmin(approver, user, group);
     }
 
-    /*
+
     @DeleteMapping("/remove-user")
     public int removeUser(User user) throws Exception{
         //This is a bonus problem and does not contains any marks
@@ -93,5 +91,5 @@ public class WhatsappController {
 
         return whatsappService.findMessage(start, end, K);
     }
-    */
+
 }
